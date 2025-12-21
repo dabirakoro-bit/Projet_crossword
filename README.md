@@ -15,7 +15,7 @@ Il inclut également un mode interactif où un joueur peut placer lui-même les 
 - Vérification des **débords horizontaux et verticaux**  
 - Vérification des **cases voisines** pour éviter les collisions  
 - Placement horizontal et vertical 
-- 
+- Agorithme de géneration de la meuilleur configuration possible basé sur la methode brute force 
 - Mode joueur interactif avec vérification du placement  
 
 ## Organisation du projet
@@ -42,39 +42,39 @@ gcc main.c crossword.c -o crossword
 
 ## Principe de l’algorithme (méthode brute force)
 
-1. Placement du **premier mot** au centre de la grille (choisi aléatoirement).  
+1. Placement du premier mot au centre de la grille (choisi aléatoirement).  
 2. Pour chaque mot restant du lexique :  
-   - Recherche d’une **lettre commune** avec un mot déjà placé.  
-   - Calcul de la **position de départ** à partir de la lettre commune.  
-   - Test du **débordement** (ne pas dépasser les limites de la grille).  
-   - Vérification des **cases adjacentes** pour éviter les collisions avec d’autres mots.  
+   - Recherche d’une lettre commune avec un mot déjà placé.  
+   - Calcul de la position de départ à partir de la lettre commune.  
+   - Test du débordement (ne pas dépasser les limites de la grille).  
+   - Vérification des cases adjacentes pour éviter les collisions avec d’autres mots.  
    - Placement du mot si toutes les conditions sont respectées.  
 3. Répétition jusqu’à ce que tous les mots soient placés ou que le placement soit impossible.  
 
 ## Algorithme du meilleur crossword
 
-Le mode **meilleur crossword** vise à déterminer la configuration de grille permettant de **placer le plus grand nombre de mots** du lexique.
+Le mode meilleur crossword vise à déterminer la configuration de grille permettant de placer le plus grand nombre de mots du lexique.
 
 ### Principe général
 
-1. Chaque mot du lexique est testé successivement comme **mot de départ**.
+1. Chaque mot du lexique est testé successivement comme mot de départ.
 2. Pour chaque mot testé :
    - Une grille vide est initialisée.
    - Le mot est placé au centre de la grille, horizontalement.
 3. Les autres mots du lexique sont ensuite placés automatiquement en utilisant l’algorithme de placement par intersections.
-4. Un **score** est calculé correspondant au nombre total de mots effectivement placés dans la grille.
-5. La configuration obtenant le **meilleur score** est conservée.
+4. Un score est calculé correspondant au nombre total de mots effectivement placés dans la grille.
+5. La configuration obtenant le meilleur score est conservée.
 6. À la fin du processus, la grille associée au score maximal est affichée.
 
 ### Objectif
 
-Maximiser le **nombre de mots placés** dans la grille, sans chercher à optimiser la compacité ou la densité des croisements.
+Maximiser le nombre de mots placés dans la grille, sans chercher à optimiser la compacité ou la densité des croisements.
 
 
 ## Algorithme du mode joueur (mode interactif)
 
 Le mode joueur permet à l’utilisateur de placer manuellement les mots dans la grille, en interaction directe avec le programme.  
-Contrairement au mode automatique, l’objectif est de **simplifier les règles de placement** afin de rendre le jeu plus fluide et plus accessible.
+Contrairement au mode automatique, l’objectif est de simplifier les règles de placement afin de rendre le jeu plus fluide et plus accessible.
 
 ### Principe général
 
@@ -98,13 +98,13 @@ Contrairement au mode automatique, l’objectif est de **simplifier les règles 
 
 ### Vérifications effectuées en mode joueur
 
-Les vérifications suivantes sont **systématiquement appliquées** :
+Les vérifications suivantes sont systématiquement appliquées :
 
-- Vérification des **bornes de la grille** (pas de débordement horizontal ou vertical)
-- Vérification des **conflits de lettres** :
+- Vérification des bornes de la grille (pas de débordement horizontal ou vertical)
+- Vérification des conflits de lettres :
   - Une lettre peut être placée si la case est vide
   - Ou si la lettre correspond exactement à celle déjà présente
-- Vérification du **sens de placement** (horizontal ou vertical valide)
+- Vérification du sens de placement (horizontal ou vertical valide)
 
 Ces contrôles sont assurés par les fonctions :
 - `can_place_word_direct`
@@ -114,9 +114,9 @@ Ces contrôles sont assurés par les fonctions :
 
 ### Contraintes volontairement non vérifiées en mode joueur
 
-Afin d’**alléger la charge algorithmique** et de **rendre le jeu plus agréable**, certaines contraintes présentes dans le mode automatique **ne sont pas vérifiées** en mode joueur.
+Afin d’alléger la charge algorithmique et de rendre le jeu plus agréable, certaines contraintes présentes dans le mode automatique ne sont pas vérifiées en mode joueur.
 
-Ces choix sont **volontaires** et assumés.
+Ces choix sont volontaires et assumés.
 
 #### Contraintes non vérifiées :
 
@@ -135,16 +135,13 @@ Ces choix sont **volontaires** et assumés.
 
 Ces simplifications ont été introduites pour :
 
-- Réduire la **complexité du code** en mode interactif
+- Réduire la complexité du code en mode interactif
 - Éviter des règles trop strictes qui pourraient frustrer le joueur
-- Favoriser une **expérience ludique** plutôt qu’un placement strictement optimal
+- Favoriser une expérience ludique plutôt qu’un placement strictement optimal
 - Distinguer clairement :
-  - le **mode automatique** (algorithmiquement rigoureux)
-  - le **mode joueur** (orienté jeu et interaction)
+  - le mode automatique (algorithmiquement rigoureux)
+  - le mode joueur (orienté jeu et interaction)
 
-
-
-## Améliorations possibles
 
 ## Améliorations possibles
 
@@ -182,7 +179,7 @@ Ces simplifications ont été introduites pour :
 
 ## Auteur
 
-**Dabira Koro**  
-**Ngowet Yacynthe**  
+Dabira Koro
+Ngowet Yacynthe
 
 Étudiants à Polytech Lille
