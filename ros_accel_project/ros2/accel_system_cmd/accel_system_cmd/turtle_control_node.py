@@ -22,7 +22,14 @@ class TurtleControl(Node):
             '/turtle1/cmd_vel',
             10
         )
+        # Variables du filtre
+        self.fx = 0.0
+        self.fy = 0.0
 
+        # Coefficient de filtrage
+        self.alpha = 0.4
+
+        # Zone morte
         self.deadband = 1.0
 
         self.get_logger().info("Turtle control node started")
@@ -39,21 +46,26 @@ class TurtleControl(Node):
         if abs(y) < self.deadband:
             y = 0.0
 
+           # Filtre exponentiel
+        self.fx = (1 - self.alpha) * self.fx + self.alpha * x
+        self.fy = (1 - self.alpha) * self.fy + self.alpha * y
+
         cmd = Twist()
 
-        # Avancer / reculer
-        cmd.linear.x = y * 0.2
+         # Commande
+        cmd.linear.x = self.fy * 0.2
+        cmd.angular.z = self.fx * 0.2
 
-        # Tourner
-        cmd.angular.z = x * 0.2
+         
 
         self.publisher.publish(cmd)
 
         self.get_logger().info(
-            f"X={x:.2f}  Y={y:.2f}  "
-            f"V={cmd.linear.x:.2f}  W={cmd.angular.z:.2f}"
-        )
-
+        f"X={self.fx:.2f} "
+        f"Y={self.fy:.2f} "
+        f"V={cmd.linear.x:.2f} "
+        f"W={cmd.angular.z:.2f}"
+    )
 
 def main(args=None):
 
