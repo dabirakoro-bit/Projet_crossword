@@ -1,0 +1,19 @@
+# ROS2 build files
+build/
+install/
+log/
+
+# Python
+__pycache__/
+*.pyc
+
+# VS Code
+.vscode/
+
+# Arduino
+*.hex
+*.elf
+
+# Temporary files
+*.tmp
+*.swp
