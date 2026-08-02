@@ -120,7 +120,7 @@ Le fonctionnement global suit les étapes suivantes :
 
 Une démonstration du fonctionnement complet du système est disponible dans la vidéo suivante :
 
-[▶️ Voir la démonstration du projet](https://youtu.be/UxNKkSdeY-A)
+[▶️ Voir la démonstration du projet](https://youtube.com/shorts/4I9wfwPAx_c?feature=share)
 
 ---
 # 🧩 Nœuds ROS2
