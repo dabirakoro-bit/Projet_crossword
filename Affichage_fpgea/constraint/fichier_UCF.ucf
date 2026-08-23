@@ -1,0 +1,23 @@
+# Switchs (SW3 à SW0)
+NET "sw[0]" LOC = "T10" | IOSTANDARD = "LVCMOS33"; # SW0 (LSB)
+NET "sw[1]" LOC = "T9"  | IOSTANDARD = "LVCMOS33"; # SW1
+NET "sw[2]" LOC = "V9"  | IOSTANDARD = "LVCMOS33"; # SW2
+NET "sw[3]" LOC = "M8"  | IOSTANDARD = "LVCMOS33"; # SW3 (MSB)
+
+# Segments (CA à CG dans l'ordre seg[6] à seg[0])
+NET "seg[6]" LOC = "T17" | IOSTANDARD = "LVCMOS33"; # CA (Segment A)
+NET "seg[5]" LOC = "T18" | IOSTANDARD = "LVCMOS33"; # CB (Segment B)
+NET "seg[4]" LOC = "U17" | IOSTANDARD = "LVCMOS33"; # CC (Segment C)
+NET "seg[3]" LOC = "U18" | IOSTANDARD = "LVCMOS33"; # CD (Segment D)
+NET "seg[2]" LOC = "M14" | IOSTANDARD = "LVCMOS33"; # CE (Segment E)
+NET "seg[1]" LOC = "N14" | IOSTANDARD = "LVCMOS33"; # CF (Segment F) 
+NET "seg[0]" LOC = "L14" | IOSTANDARD = "LVCMOS33"; # CG (Segment G)
+
+# Point décimal
+NET "dp"     LOC = "M13" | IOSTANDARD = "LVCMOS33"; # DP 
+
+# Anodes
+NET "an[0]" LOC = "N16" | IOSTANDARD = "LVCMOS33"; # AN0 (Digit 0)
+NET "an[1]" LOC = "N15" | IOSTANDARD = "LVCMOS33"; # AN1
+NET "an[2]" LOC = "P18" | IOSTANDARD = "LVCMOS33"; # AN2
+NET "an[3]" LOC = "P17" | IOSTANDARD = "LVCMOS33"; # AN3 
